@@ -27,6 +27,24 @@ public class Controller {
             return new ModelAndView(model, "randomiser_2.vtl");
         }, velocityTemplateEngine);
 
+        get("/randomName/three", (req,res) ->{
+            NameList names = new NameList();
+            ArrayList<String> results = new ArrayList<>();
+            results = names.getThreeNames();
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("results", results);
+            return new ModelAndView(model, "randomiser_3.vtl");
+        }, velocityTemplateEngine);
+
+        get("/randomName/four", (req,res) ->{
+            NameList names = new NameList();
+            ArrayList<String> results = new ArrayList<>();
+            results = names.getFourNames();
+            HashMap<String, Object> model = new HashMap<>();
+            model.put("results", results);
+            return new ModelAndView(model, "randomiser_4.vtl");
+        }, velocityTemplateEngine);
+
     }
 
 
