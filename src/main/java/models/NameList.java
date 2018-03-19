@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class NameList {
-    public String getNames(){
+    public String getName(){
         ArrayList<String> names = new ArrayList<String>();
         names.add("chris");
         names.add("Seth");
