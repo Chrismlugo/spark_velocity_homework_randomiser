@@ -6,7 +6,7 @@ import java.util.Collections;
 public class NameList {
     public String getName(){
         ArrayList<String> names = new ArrayList<String>();
-        names.add("chris");
+        names.add("Chris");
         names.add("Seth");
         names.add("Kevin");
         names.add("Bradley");
