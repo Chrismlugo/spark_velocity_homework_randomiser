@@ -3,6 +3,7 @@ import models.NameList;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Controller {
@@ -19,11 +20,10 @@ public class Controller {
 
         get("/randomName/two", (req,res) -> {
             NameList names = new NameList();
-            String result1 = names.getName();
-            String result2 = names.getName();
+            ArrayList<String> results = new ArrayList<>();
+            results = names.getPairOfNames();
             HashMap<String, Object> model = new HashMap<>();
-            model.put("result1", result1);
-            model.put("result2", result2);
+            model.put("results", results);
             return new ModelAndView(model, "randomiser_2.vtl");
         }, velocityTemplateEngine);
 
