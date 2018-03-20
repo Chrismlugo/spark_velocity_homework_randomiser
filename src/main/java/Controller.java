@@ -1,4 +1,6 @@
 import static spark.Spark.get;
+import static spark.Spark.staticFileLocation;
+
 import models.NameList;
 import spark.ModelAndView;
 import spark.template.velocity.VelocityTemplateEngine;
@@ -9,13 +11,15 @@ import java.util.HashMap;
 public class Controller {
     public static void main(String[] args) {
         VelocityTemplateEngine velocityTemplateEngine = new VelocityTemplateEngine();
+        staticFileLocation("public");
 
         get("/randomName/one", (req,res) ->{
             NameList names = new NameList();
             String result = names.getName();
             HashMap<String, Object> model = new HashMap();
             model.put("result", result);
-            return new ModelAndView(model, "randomiser_1.vtl");
+            model.put("template", "randomiser_1.vtl");
+            return new ModelAndView(model, "layout.vtl");
         }, velocityTemplateEngine);
 
         get("/randomName/two", (req,res) -> {
@@ -24,7 +28,8 @@ public class Controller {
             results = names.getPairOfNames();
             HashMap<String, Object> model = new HashMap<>();
             model.put("results", results);
-            return new ModelAndView(model, "randomiser_2.vtl");
+            model.put("template", "randomiser_2.vtl");
+            return new ModelAndView(model, "layout.vtl");
         }, velocityTemplateEngine);
 
         get("/randomName/three", (req,res) ->{
@@ -33,7 +38,8 @@ public class Controller {
             results = names.getThreeNames();
             HashMap<String, Object> model = new HashMap<>();
             model.put("results", results);
-            return new ModelAndView(model, "randomiser_3.vtl");
+            model.put("template", "randomiser_3.vtl");
+            return new ModelAndView(model, "layout.vtl");
         }, velocityTemplateEngine);
 
         get("/randomName/four", (req,res) ->{
@@ -42,7 +48,8 @@ public class Controller {
             results = names.getFourNames();
             HashMap<String, Object> model = new HashMap<>();
             model.put("results", results);
-            return new ModelAndView(model, "randomiser_4.vtl");
+            model.put("template", "randomiser_4.vtl");
+            return new ModelAndView(model, "layout.vtl");
         }, velocityTemplateEngine);
 
     }
